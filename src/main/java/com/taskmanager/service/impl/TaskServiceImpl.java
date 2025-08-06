@@ -1,4 +1,6 @@
 package com.taskmanager.service.impl;
 
-public class TaskServiceImpl {
+import com.taskmanager.service.TaskService;
+
+public class TaskServiceImpl implements TaskService {
 }
