@@ -4,8 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
+import com.taskmanager.enums.Role;
+
 // Data Annotation'u - @Getter , @Setter , @RequiredArgsConstructor , @ToString , @EqualsAndHashCode
 // gibi annotationları zaten sağlıyor.
 @Data
@@ -21,10 +22,15 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private String role;
-    @OneToMany(mappedBy = "User", cascade = CascadeType.ALL)
+
+    @Enumerated(EnumType.STRING)  // Enum değeri veritabanına string olarak yazılıyo ("USER", "ADMIN")
+    private Role role;                              // sınırlı ve sabit bir değer kümesini temsil etmek için kullanılır
+
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Task> tasks;
-    @OneToMany(mappedBy = "User", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments;
 }
 

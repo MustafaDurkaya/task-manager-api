@@ -1,9 +1,12 @@
 package com.taskmanager.service;
 
-import com.taskmanager.entity.User;
+import com.taskmanager.dto.CreateUserRequest;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public interface UserService {
-    User createUser(User user);
+    CreateUserRequest register(CreateUserRequest req);
+    List<CreateUserRequest> getAllUsers();
+    CreateUserRequest getUserById(Long id);
 }
