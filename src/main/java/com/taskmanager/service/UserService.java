@@ -1,4 +1,4 @@
 package com.taskmanager.service;
 
-public class UserService {
+public interface UserService {
 }

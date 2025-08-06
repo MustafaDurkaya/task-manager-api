@@ -1,4 +1,4 @@
 package com.taskmanager.service;
 
-public class EmailService {
+public interface EmailService {
 }
