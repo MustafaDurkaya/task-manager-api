@@ -1,9 +1,11 @@
 package com.taskmanager.service.impl;
 
+import com.taskmanager.dto.CreateUserRequest;
 import com.taskmanager.entity.User;
 import com.taskmanager.repository.UserRepository;
 import com.taskmanager.service.UserService;
 
+import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
@@ -11,6 +13,16 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(UserRepository userRepository){
         this.userRepository = userRepository;
+    }
+
+    @Override
+    public CreateUserRequest register(CreateUserRequest req) {
+        return null;
+    }
+
+    @Override
+    public List<CreateUserRequest> getAllUsers() {
+        return List.of();
     }
 
     @Override
