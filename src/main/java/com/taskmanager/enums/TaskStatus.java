@@ -1,11 +1,9 @@
 package com.taskmanager.enums;
 
 public enum TaskStatus {
-    NEW("Newly created task"),
-    IN_PROGRESS("Task is being worked on"),
-    COMPLETED("Task is finished"),
-    CANCELLED("Task was cancelled"),
-    ON_HOLD("Task is paused");
+    TODO("Task is to be done"),
+    IN_PROGRESS("Task is in Progress"),
+    DONE("Task is finished");
 
     private final String description;
 
