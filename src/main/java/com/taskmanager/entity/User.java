@@ -13,7 +13,7 @@ import com.taskmanager.enums.Role;
 @AllArgsConstructor  // Tüm alanları içeren bir constructor oluşturur
 @NoArgsConstructor  // Parametresiz boş constructor üretir  #Entity sınıfında boş bir constructor zorunludur.
 @Entity
-@Table(name = "User" )
+@Table(name = "User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +26,10 @@ public class User {
     @Enumerated(EnumType.STRING)  // Enum değeri veritabanına string olarak yazılıyo ("USER", "ADMIN")
     private Role role;                              // sınırlı ve sabit bir değer kümesini temsil etmek için kullanılır
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Task> tasks;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comment> comments;
 }
+    // FetchType.LAZY ==> Liste, çağrılana kadar yüklenmez, zaten default değer ama öğrenmek için yazdım
 

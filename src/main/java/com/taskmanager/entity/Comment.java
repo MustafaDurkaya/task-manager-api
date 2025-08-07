@@ -26,7 +26,7 @@ public class Comment {
     @JoinColumn(name = "task_id")
     private Task task;
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<CommentImage> commentImages;
 }
 
