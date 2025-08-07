@@ -1,14 +1,22 @@
 package com.taskmanager.dto;
 
 
-import com.taskmanager.entity.User;
+import com.taskmanager.enums.Role;
 
 public class UserResponse {
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
-    private User.Role role;
+    private Role role;
+
+    public UserResponse(Long id, String firstName, String lastName, String email, Role role) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.role = Role.USER;
+    }
 
     public Long getId() {return id;}
 
@@ -26,7 +34,7 @@ public class UserResponse {
 
     public void setEmail(String email) {this.email = email;}
 
-    public User.Role getRole() {return role;}
+    public Role getRole() {return role;}
 
-    public void setRole(User.Role role) {this.role = role;}
+    public void setRole(Role role) {this.role = role;}
 }
