@@ -26,8 +26,6 @@ public class User {
     @Enumerated(EnumType.STRING)  // Enum değeri veritabanına string olarak yazılıyo ("USER", "ADMIN")
     private Role role;                              // sınırlı ve sabit bir değer kümesini temsil etmek için kullanılır
 
-
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Task> tasks;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
