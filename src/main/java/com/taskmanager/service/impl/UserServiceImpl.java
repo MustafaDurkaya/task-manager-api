@@ -30,6 +30,16 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public CreateUserRequest register(CreateUserRequest req) {
+        return null;
+    }
+
+    @Override
+    public List<CreateUserRequest> getAllUsers() {
+        return List.of();
+    }
+
     public Optional<User> getUserById(Long id){
         return userRepository.findById(id);
     }

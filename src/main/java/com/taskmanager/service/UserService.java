@@ -8,10 +8,9 @@ import java.util.Optional;
 
 @Service
 public interface UserService {
-    CreateUserRequest register(CreateUserRequest req);
-    List<CreateUserRequest> getAllUsers();
-
     User createUser(User user);
 
+    CreateUserRequest register(CreateUserRequest req);
+    List<CreateUserRequest> getAllUsers();
     Optional<User> getUserById(Long id);
 }
