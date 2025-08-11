@@ -1,4 +1,4 @@
-package com.taskmanager.dto;
+package com.taskmanager.dto.response;
 
 
 import com.taskmanager.enums.Role;

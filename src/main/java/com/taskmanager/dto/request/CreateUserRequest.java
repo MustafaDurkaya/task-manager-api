@@ -1,5 +1,4 @@
-package com.taskmanager.dto;
-import com.taskmanager.entity.User;
+package com.taskmanager.dto.request;
 
 public class CreateUserRequest {
     private String firstName;

@@ -1,4 +1,4 @@
-package com.taskmanager.dto;
+package com.taskmanager.dto.request;
 
 public class UpdateUserRequest {
     private String firstName;

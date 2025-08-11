@@ -1,6 +1,6 @@
 package com.taskmanager.service.impl;
 
-import com.taskmanager.dto.CreateUserRequest;
+import com.taskmanager.dto.request.CreateUserRequest;
 import com.taskmanager.entity.User;
 import com.taskmanager.repository.UserRepository;
 import com.taskmanager.service.UserService;

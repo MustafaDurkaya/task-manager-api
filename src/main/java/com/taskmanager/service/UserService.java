@@ -1,6 +1,6 @@
 package com.taskmanager.service;
 
-import com.taskmanager.dto.CreateUserRequest;
+import com.taskmanager.dto.request.CreateUserRequest;
 import com.taskmanager.entity.User;
 import org.springframework.stereotype.Service;
 import java.util.List;
