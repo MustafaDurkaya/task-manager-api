@@ -8,7 +8,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OpenApiConfig {
     @Bean
-    public OpenAPI api(){
-        return new OpenAPI().info(new Info().title("Task Manager API").version("v1"));
+    public OpenAPI api() {
+        return new OpenAPI().
+                info(new Info()
+                        .title("Task Manager API")
+                        .version("v1")
+                        .description("Kullanıcıların kayıt olup giriş yapabileceği, görev oluşturabileceği, yorum \n" +
+                                "yazabileceği ve görev/yorumlara fotoğraf ekleyebileceği bir REST API projesi"));
     }
 }

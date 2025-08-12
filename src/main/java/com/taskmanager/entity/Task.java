@@ -37,6 +37,11 @@ public class Task {
     @Column(nullable = false)
     private LocalDate dueDate;
 
+    private String taskId;
+    private String taskName;
+    private String taskDescription;
+    private String taskStatus;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
