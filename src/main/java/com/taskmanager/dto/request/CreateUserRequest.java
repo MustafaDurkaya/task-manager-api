@@ -26,4 +26,17 @@ public class CreateUserRequest {
     @NotBlank
     private String email;
     private Role role = Role.USER;
+
+    public CreateUserRequest(
+            @Size(min = 3, max = 16) String firstName,
+            @Size(min = 3, max = 16) String lastName,
+            @Email String email,
+            String password
+    ) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.role = Role.USER;  // Default role set to user
+    }
 }

@@ -45,6 +45,7 @@ public class User {
     private List<Task> tasks = new ArrayList<>();
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
+
 }
     // FetchType.LAZY ==> Liste, çağrılana kadar yüklenmez, zaten default değer ama öğrenmek için yazdım
 

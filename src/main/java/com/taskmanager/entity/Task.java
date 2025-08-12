@@ -1,10 +1,27 @@
 package com.taskmanager.entity;
 
-import jakarta.persistence.*;
+import com.taskmanager.enums.TaskStatus;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.FetchType;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.taskmanager.enums.TaskStatus;
+
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
@@ -18,6 +35,7 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "task")
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,13 +43,14 @@ public class Task {
     @Column(nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT")  //açıklama alanı
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
-    @Column(nullable = false)
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;
 
     @Column(nullable = false)
@@ -42,20 +61,23 @@ public class Task {
     private String taskDescription;
     private String taskStatus;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(
+            mappedBy = "task",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
     private List<TaskImage> taskImages;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(
+            mappedBy = "task",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
+    )
     private List<Comment> comments;
 }
-
-// CascadeType.ALL ==> Tüm işlemleri uygular
-// CascadeType.PERSIST ==>Save işlemi - Ana entity kaydedildiğinde, ilişkili child entity'ler de otomatik olarak kaydedilir
-// CascadeType.MERGE ==>Güncelleme (merge) sırasında - Ana entity güncellenirse, ilişkili child entity’ler de güncellenir
-// CascadeType.REMOVE ==>Silme işlemi - Ana entity silinirse, bağlı tüm child entity’ler de otomatik silinir
-// CascadeType.REFRESH ==>Veri yenileme - Ana entity, veritabanındaki haliyle yeniden yüklenirse, ilişkili varlıklar da güncellenir
-// CascadeType.DETACH ==>Kalıcı nesneden ayırma(detach) işlemi - Ana entity, kalıcı bağlamdan (EntityManager) çıkarıldığında, ilişkili entity'ler de çıkarılır
