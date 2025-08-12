@@ -1,5 +1,10 @@
 package com.taskmanager.dto.response;
 
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
 public class TaskResponse {
     private final String taskId;
     private String taskName;
@@ -12,5 +17,4 @@ public class TaskResponse {
         this.taskDescription = taskDescription;
         this.taskStatus = taskStatus;
     }
-
 }

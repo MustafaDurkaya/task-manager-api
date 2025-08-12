@@ -1,19 +1,15 @@
 package com.taskmanager.service;
 
 import com.taskmanager.dto.request.CreateUserRequest;
-import com.taskmanager.entity.User;
-import org.springframework.stereotype.Service;
+import com.taskmanager.dto.response.UserResponse;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public interface UserService {
-    User createUser(User user);
+    UserResponse createUser(CreateUserRequest req);
 
-    CreateUserRequest register(CreateUserRequest req);
+    List<UserResponse> getAllUsers();
 
-    List<CreateUserRequest> getAllUsers();
-
-    Optional<User> getUserById(Long id);
+    Optional<UserResponse> getUserById(Long id);
 }
